@@ -7,7 +7,7 @@
     "build": "nx build",
     "test": "nx test",
     "test:all": "nx run-many --all --target=test",
-    "test:affected": "nx affected:test --base=master"
+    "test:affected": "nx affected:test --base=origin/master"
   },
   "private": true,
   "dependencies": {
