@@ -3,6 +3,7 @@ import {
   LambdaError,
 } from '@cloudy-brick/node/node-microservice-model-lambda';
 import * as fs from 'fs';
+import path = require('path');
 
 const statusLambda: LambdaDefinition = {
   method: 'GET',
@@ -42,7 +43,7 @@ const pdfLambda: LambdaDefinition = {
   method: 'GET',
   url: '/pdf',
   handler: (request, reply) => {
-    const buffer = fs.readFileSync(__dirname + '/app/lambdas/file.pdf');
+    const buffer = fs.readFileSync(path.join(__dirname,'./file.pdf'));
     reply.send(buffer);
   },
 };

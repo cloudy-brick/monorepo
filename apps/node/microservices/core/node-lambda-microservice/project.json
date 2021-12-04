@@ -59,6 +59,11 @@
       "options": {
         "push": false,
         "tags": ["cloudy-brick/node-lambda-microservice:latest", "cloudy-brick/node-lambda-microservice:v1"]
+      },
+      "configurations":{
+        "publish":{
+          "push": true
+        }
       }
     }
   },
