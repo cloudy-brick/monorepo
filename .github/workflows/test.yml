@@ -24,7 +24,7 @@ jobs:
       - name: Audit Test
         run: npm audit --production
 
-        test-affected:
+  test-affected:
 
     runs-on: ubuntu-latest
 
