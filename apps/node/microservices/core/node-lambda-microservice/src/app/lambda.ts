@@ -8,9 +8,7 @@ import fastifyRequestLogger from '@mgcrea/fastify-request-logger';
 import lambdas from './lambdas';
 import { tryParseJSONObject } from '@cloudy-brick/node/utils';
 
-export const HTTP_PORT = process.env.HTTP_PORT
-  ? parseInt(process.env.HTTP_PORT)
-  : 8080;
+export const HTTP_PORT = process.env.HTTP_PORT ? process.env.HTTP_PORT : 8080;
 export const lambdaSrv = fastify({
   disableRequestLogging: true,
   logger:
@@ -40,14 +38,6 @@ Object.keys(lambdas).forEach((key: string) => {
           throw error;
         }
       }
-    },
-    preSerialization: (request, reply, payload, done) => {
-      debugger;
-      done();
-    },
-    onError: (request, reply, payload, done) => {
-      debugger;
-      done();
     },
     onSend: (request, reply, payload, done) => {
       let newPayload: LambdaResponse;

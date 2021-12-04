@@ -98,4 +98,15 @@ describe('Lambda System Testing', () => {
     expect(response.body).toBeDefined();
     expect(Buffer.isBuffer(response.body));
   });
+
+  it('Testing missing path', async () => {
+    const response = await lambdaSrv.inject({
+      method: 'GET',
+      url: '/pippo',
+    });
+    expect(response).toBeDefined();
+    expect(response.statusCode).toBeDefined();
+    expect(response.statusCode).toBe(404);
+    expect(response.body).toBeDefined();
+  });
 });

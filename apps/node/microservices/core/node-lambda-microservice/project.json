@@ -10,7 +10,10 @@
         "outputPath": "dist/apps/node/microservices/core/node-lambda-microservice",
         "main": "apps/node/microservices/core/node-lambda-microservice/src/main.ts",
         "tsConfig": "apps/node/microservices/core/node-lambda-microservice/tsconfig.app.json",
-        "assets": []
+        "assets": [
+          "apps/node/microservices/core/node-lambda-microservice/src/app/lambdas/file.pdf"
+        ],
+        "generatePackageJson": true
       },
       "configurations": {
         "production": {
@@ -49,6 +52,13 @@
       "options": {
         "jestConfig": "apps/node/microservices/core/node-lambda-microservice/jest.config.js",
         "passWithNoTests": true
+      }
+    },
+    "docker": {
+      "executor": "@nx-tools/nx-docker:build",
+      "options": {
+        "push": false,
+        "tags": ["cloudy-brick/node-lambda-microservice:latest", "cloudy-brick/node-lambda-microservice:v1"]
       }
     }
   },

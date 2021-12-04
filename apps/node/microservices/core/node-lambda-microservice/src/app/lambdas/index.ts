@@ -42,7 +42,7 @@ const pdfLambda: LambdaDefinition = {
   method: 'GET',
   url: '/pdf',
   handler: (request, reply) => {
-    const buffer = fs.readFileSync(__dirname + '/file.pdf');
+    const buffer = fs.readFileSync(__dirname + '/app/lambdas/file.pdf');
     reply.send(buffer);
   },
 };
