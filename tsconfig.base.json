@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@cloudy-brick/node/node-microservice-model-lambda": [
+        "libs/node/node-microservice-model-lambda/src/index.ts"
+      ],
+      "@cloudy-brick/node/utils": ["libs/node/utils/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

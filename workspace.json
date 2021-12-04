@@ -1,7 +1,8 @@
 {
   "version": 2,
-  "projects": {},
-  "cli": {
-    "defaultCollection": "@nrwl/workspace"
+  "projects": {
+    "node-microservices-core-node-lambda-microservice": "apps/node/microservices/core/node-lambda-microservice",
+    "node-node-microservice-model-lambda": "libs/node/node-microservice-model-lambda",
+    "node-utils": "libs/node/utils"
   }
 }

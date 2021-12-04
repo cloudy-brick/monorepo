@@ -1,0 +1,23 @@
+{
+  "root": "libs/node/node-microservice-model-lambda",
+  "sourceRoot": "libs/node/node-microservice-model-lambda/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/node/node-microservice-model-lambda/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/node/node-microservice-model-lambda"],
+      "options": {
+        "jestConfig": "libs/node/node-microservice-model-lambda/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["node", "model", "library", "microservice"]
+}
