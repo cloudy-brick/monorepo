@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 0
 
   test-audit:
-
+    needs: [checkout]
     runs-on: ubuntu-latest
 
 #    strategy:
