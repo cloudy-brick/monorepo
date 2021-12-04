@@ -58,10 +58,13 @@
       "executor": "@nx-tools/nx-docker:build",
       "options": {
         "push": false,
-        "tags": ["cloudy-brick/node-lambda-microservice:latest", "cloudy-brick/node-lambda-microservice:v1"]
+        "tags": [
+          "cloudy-brick/node-lambda-microservice:latest",
+          "cloudy-brick/node-lambda-microservice:v1"
+        ]
       },
-      "configurations":{
-        "publish":{
+      "configurations": {
+        "publish": {
           "push": true
         }
       }
