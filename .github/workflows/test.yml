@@ -1,12 +1,13 @@
 name: Node.js CI
 
+name: Pushing on branch !== master
 on:
   push:
     branches-ignore: [ master ]
 
 jobs:
 
-  checkout:
+  test:
     runs-on: ubuntu-latest
 
     strategy:
@@ -14,47 +15,25 @@ jobs:
         node-version: [14.x]
 
     steps:
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
-  test-audit:
-    needs: [checkout]
-    runs-on: ubuntu-latest
-
-#    strategy:
-#      matrix:
-#        node-version: [14.x]
-
-    steps:
-#      - uses: actions/checkout@v2
-#        with:
-#          fetch-depth: 0
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Audit Test
-        run: npm audit --production
-
-  test-affected:
-    needs: [test-audit]
-    runs-on: ubuntu-latest
-
-#    strategy:
-#      matrix:
-#        node-version: [14.x]
-
-    steps:
-#      - uses: actions/checkout@v2
-#        with:
-#          fetch-depth: 0
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
       - name: Fetching master
         run: git fetch origin master
+      - name: Cache Gradle packages
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-build-${{ env.cache-name }}-${{ runner.os }}-build-${{ runner.os }}-
+          path: node_modules
+      - name: Audit Test
+        run: npm audit --production
       - name: Install dependencies
         run: npm ci
       - name: Run Test on Affected projects
