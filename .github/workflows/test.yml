@@ -18,12 +18,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - uses: actions/checkout@v2
-        id: node_modules_cache
         with:
           fetch-depth: 0
       - name: Fetching master
         run: git fetch origin master
       - name: Cache node_modules packages
+        id: node_modules_cache
         uses: actions/cache@v2
         env:
           cache-name: cache-node-modules
