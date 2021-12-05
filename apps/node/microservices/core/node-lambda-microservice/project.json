@@ -13,7 +13,8 @@
         "assets": [
           "apps/node/microservices/core/node-lambda-microservice/src/app/lambdas/file.pdf"
         ],
-        "generatePackageJson": true
+        "generatePackageJson": true,
+        "webpackConfig": "apps/node/microservices/core/node-lambda-microservice/webpackConfig.js"
       },
       "configurations": {
         "production": {
