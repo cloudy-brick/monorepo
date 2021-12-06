@@ -55,6 +55,15 @@ jobs:
           fetch-depth: 0
       - name: Fetching master
         run: git fetch origin master
+      - name: Cache node_modules packages
+        id: node_modules_cache
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-build-${{ env.cache-name }}-${{ runner.os }}-build-${{ runner.os }}
+          path: node_modules
       - name: Install dependencies
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
         run: npm ci
