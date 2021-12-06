@@ -7,13 +7,16 @@
     "build": "nx build",
     "test": "nx test",
     "test:all": "nx run-many --all --target=test",
-    "test:affected": "nx affected:test --base=origin/master"
+    "test:affected": "nx affected:test --base=origin/master",
+    "build:affected": "nx affected:build --base=origin/master"
   },
   "private": true,
   "dependencies": {
     "@mgcrea/fastify-request-logger": "^0.5.2",
     "@mgcrea/pino-pretty-compact": "^0.5.0",
     "fastify": "^3.24.1",
+    "long": "^5.2.0",
+    "pino-pretty": "^7.2.0",
     "tslib": "^2.0.0"
   },
   "devDependencies": {

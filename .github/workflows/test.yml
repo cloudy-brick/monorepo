@@ -38,3 +38,25 @@ jobs:
         run: npm ci
       - name: Run Test on Affected projects
         run: npm run test:affected
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Fetching master
+        run: git fetch origin master
+      - name: Install dependencies
+        if: steps.node_modules_cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Build code
+        run: npm run build:affected

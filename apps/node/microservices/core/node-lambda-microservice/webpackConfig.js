@@ -11,19 +11,7 @@ module.exports = (config, context) => {
         filename: "[name].js",
       },
       externals: {
-        './lambdas': './app/lambdas'
-      },
-//      optimization: {
-//        runtimeChunk: 'single',
-//        splitChunks: {
-//          cacheGroups: {
-//            vendor:{
-//              test: /[\\/]app[\\/]/,
-//              name: 'lambdas.js',
-//              chunks: 'all'
-//            }
-//          }          
-//        }
-//      }
+        "./lambdas": "src/app/lambdas"
+      }
     };
   };

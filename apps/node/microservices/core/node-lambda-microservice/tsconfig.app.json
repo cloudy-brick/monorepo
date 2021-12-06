@@ -3,8 +3,11 @@
   "compilerOptions": {
     "outDir": "../../../../../dist/out-tsc",
     "module": "commonjs",
-    "types": ["node"]
+    "types": ["node"],
+//    "paths": {
+//      "lambdas": ["src/app/lambdas"]
+//    }
   },
   "exclude": ["**/*.spec.ts", "**/*.test.ts"],
-  "include": ["**/*.ts", "src/app/lambdas/index.js"]
+  "include": ["**/*.ts"]
 }
