@@ -9,7 +9,7 @@
   },
   "private": true,
   "dependencies": {
-    "fastify": "^3.24.1"
+    "fastify": "^3.29.4"
   },
   "devDependencies": {
     "@nrwl/cli": "12.9.0",
